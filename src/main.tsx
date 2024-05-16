@@ -5,6 +5,7 @@ import { TailwindIndicator } from "./components/tailwind-indicator.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { TeamPage } from "./Team.tsx";
+import DiscordRedirect from "./discord-redirect.tsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
     path: "/team",
     element: <TeamPage />,
   },
+  {
+    path: "/dc",
+    element: <DiscordRedirect />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -22,5 +27,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <RouterProvider router={router} />
 
     <TailwindIndicator />
-  </React.StrictMode>
+  </React.StrictMode>,
 );
