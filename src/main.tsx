@@ -6,26 +6,31 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import { TeamPage } from "./Team.tsx";
 import DiscordRedirect from "./discord-redirect.tsx";
+import CodecellRedirect from "./codecell-redirect.tsx";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-  },
-  {
-    path: "/team",
-    element: <TeamPage />,
-  },
-  {
-    path: "/dc",
-    element: <DiscordRedirect />,
-  },
+    {
+        path: "/",
+        element: <App />,
+    },
+    {
+        path: "/team",
+        element: <TeamPage />,
+    },
+    {
+        path: "/dc",
+        element: <DiscordRedirect />,
+    },
+    {
+        path: "/codecell",
+        element: <CodecellRedirect />,
+    }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
+    <React.StrictMode>
+        <RouterProvider router={router} />
 
-    <TailwindIndicator />
-  </React.StrictMode>,
+        <TailwindIndicator />
+    </React.StrictMode>,
 );
