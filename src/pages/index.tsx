@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Head from "next/head";
+import { CodeCell } from "@betteridea/codecell";
 
 import { FaDiscord, FaGreaterThan, FaLessThan, FaLinkedin, FaTwitter, FaXTwitter } from "react-icons/fa6"
 import { TbMailFilled } from "react-icons/tb"
@@ -20,7 +21,7 @@ import logoFull from "@/assets/logo-full.png";
 type TProduct = {
   heading: string,
   title: string,
-  description: string,
+  description: string | JSX.Element,
   image: string | StaticImageData,
   link: string
 }
@@ -43,7 +44,7 @@ const products: TProduct[] = [
   {
     heading: "LUA Code Cells",
     title: "Portable Code Cells for AO",
-    description: "Run and share code snippets in any webapp",
+    description: <div>Run and share code snippets in any webapp<CodeCell cellId="x" appName="BetterIDEa-Landing" nowallet height="120px" className="mx-auto mt-3" code={`-- This is a live codecell,\n-- try clicking the run button\nprint("Hello AO!")`} /></div>,
     image: codecell,
     link: "https://www.npmjs.com/package/@betteridea/codecell"
   },
@@ -60,32 +61,37 @@ function Navbar() {
   const items = [
     { name: "Home", href: "#home" },
     { name: "Products", href: "#products" },
-    { name: "Team", href: "#team" },
-    { name: "Contact", href: "#contact" },
+    // { name: "Team", href: "#team" },
+    // { name: "Contact", href: "#contact" },
   ]
 
   const latestActiveUrl = typeof window !== 'undefined' ? window.location.href : '';
   const activeUrl = latestActiveUrl.split('#')[1];
 
-  return <div className="z-20 flex items-center justify-center gap-2 p-3 w-fit rounded-full border border-foreground/40 mx-auto fixed left-0 right-0 top-5 bg-background/70 backdrop-blur">
+  return <div className="z-20 flex flex-row max-w-[90vw] w-fit items-center justify-center gap-2 p-3 rounded-full border border-foreground/40 mx-auto fixed left-0 right-0 top-5 bg-background/70 backdrop-blur">
+    <div>
+      <Image src={logoFull} alt="BetterIDEa" width={100} height={50} className="ml-3" />
+    </div>
+    <div className="flex gap-1">
+      {
+        items.map(item => (
+          <Link href={item.href} key={item.name}>
+            <Button data-active={("#" + activeUrl).endsWith(item.href)} className="rounded-full px-4 h-6 text-sm data-[active=true]:bg-primary" variant="ghost">{item.name}</Button>
+          </Link>
+        ))
+      }
+    </div>
+    <div className="flex-grow" />
     <Link href="https://docs.betteridea.dev" target="_blank">
       <Button className="rounded-full px-4 h-7 data-[active=true]:bg-primary" variant="ghost">Docs</Button>
     </Link>
-    <Image src={logo} alt="BetterIDEa" width={30} height={30} />
-    {
-      items.map(item => (
-        <Link href={item.href} key={item.name}>
-          <Button data-active={("#" + activeUrl).endsWith(item.href)} className="rounded-full px-4 h-7 data-[active=true]:bg-primary" variant="ghost">{item.name}</Button>
-        </Link>
-      ))
-    }
   </div>
 }
 
 function Product({ heading, title, description, image, link }: {
   heading: string,
   title: string,
-  description: string,
+  description: string | JSX.Element,
   image: string | StaticImageData,
   link: string
 }) {
@@ -122,7 +128,7 @@ export default function Home() {
       <Navbar />
       <div className="min-h-screen flex items-center" id="home">
         <Image src={pattern} alt="bg-grid" className="w-full h-[220px] object-bottom object-cover absolute top-0 -z-10" draggable={false} />
-        <div className="mx-auto w-fit z-10">
+        <div className="mx-auto w-full z-10">
           <div className="flex flex-col gap-4 items-center font-serif-display text-4xl md:text-6xl">
             <div>Build the future on <i>AO</i></div>
             <div className="flex items-center gap-5">w/ <span className="text-primary text-5xl md:text-7xl">BetterIDEa</span></div>
