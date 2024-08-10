@@ -63,15 +63,14 @@ function Navbar() {
     { name: "Products", href: "#products" },
     // { name: "Team", href: "#team" },
     // { name: "Contact", href: "#contact" },
+    { name: "Docs", href: "https://docs.betteridea.dev" },
   ]
 
   const latestActiveUrl = typeof window !== 'undefined' ? window.location.href : '';
   const activeUrl = latestActiveUrl.split('#')[1];
 
-  return <div className="z-20 flex flex-row max-w-[90vw] w-fit items-center justify-center gap-2 p-3 rounded-full border border-foreground/40 mx-auto fixed left-0 right-0 top-5 bg-background/70 backdrop-blur">
-    <div>
-      <Image src={logoFull} alt="BetterIDEa" width={100} height={50} className="ml-3" />
-    </div>
+  return <div className="z-20 flex flex-row max-w-[90vw] w-fit items-center justify-center gap-1.5 p-3 rounded-full border border-foreground/40 mx-auto fixed left-0 right-0 top-5 bg-background/70 backdrop-blur">
+    <Image src={logo} alt="BetterIDEa" width={30} height={30} className="ml-3" />
     <div className="flex gap-1">
       {
         items.map(item => (
@@ -81,10 +80,6 @@ function Navbar() {
         ))
       }
     </div>
-    <div className="flex-grow" />
-    <Link href="https://docs.betteridea.dev" target="_blank">
-      <Button className="rounded-full px-4 h-7 data-[active=true]:bg-primary" variant="ghost">Docs</Button>
-    </Link>
   </div>
 }
 
