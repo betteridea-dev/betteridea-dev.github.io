@@ -5,7 +5,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { CodeCell } from "@betteridea/codecell";
 
-import { FaDiscord, FaGreaterThan, FaLessThan, FaLinkedin, FaTwitter, FaXTwitter } from "react-icons/fa6"
+import { FaDiscord, FaGithub, FaGreaterThan, FaLessThan, FaLinkedin, FaTwitter, FaXTwitter } from "react-icons/fa6"
 import { TbMailFilled } from "react-icons/tb"
 
 import pattern from "@/assets/pattern.svg";
@@ -160,6 +160,7 @@ export default function Home() {
         <div className="text-center text-4xl font-serif-display">Follow us for latest updates!</div>
         <div className="flex gap-2 justify-between my-10 p-1">
           <Link href="https://x.com/betteridea_dev" target="_blank"><Button variant="ghost" className="h-16 rounded-full"><FaXTwitter size={30} /></Button></Link>
+          <Link href="https://github.com/betteridea-dev" target="_blank"><Button variant="ghost" className="h-16 rounded-full"><FaGithub size={30} /></Button></Link>
           <Link href="https://discord.gg/nm6VKUQBrA" target="_blank"><Button variant="ghost" className="h-16 rounded-full"><FaDiscord size={30} /></Button></Link>
           <Link href="https://linkedin.com/company/betteridea-dev" target="_blank"><Button variant="ghost" className="h-16 rounded-full"><FaLinkedin size={30} /></Button></Link>
           <Link href="https://mirror.xyz/0xCf673b87aFBed6091617331cC895376209d3b923" target="_blank"><Button variant="ghost" className="h-16 w-16 rounded-full p-3"><Image src={mirror} width={100} height={100} alt="mirror-logo" /></Button></Link>
