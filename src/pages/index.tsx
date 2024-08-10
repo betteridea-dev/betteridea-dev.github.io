@@ -53,16 +53,16 @@ const products: TProduct[] = [
     title: "Command Line Interface for APM",
     description: "Manage your AO packages from the terminal",
     image: apmcli,
-    link: "https://www.npmjs.com/package/@betteridea/apm"
+    link: "https://www.npmjs.com/package/apm-tool"
   }
 ]
 
 function Navbar() {
   const items = [
-    { name: "Home", href: "#home" },
+    // { name: "Home", href: "#home" },
     { name: "Products", href: "#products" },
-    // { name: "Team", href: "#team" },
-    // { name: "Contact", href: "#contact" },
+    { name: "Team", href: "#team" },
+    { name: "Contact", href: "#contact" },
     { name: "Docs", href: "https://docs.betteridea.dev" },
   ]
 
@@ -70,7 +70,7 @@ function Navbar() {
   const activeUrl = latestActiveUrl.split('#')[1];
 
   return <div className="z-20 flex flex-row max-w-[90vw] w-fit items-center justify-center gap-1.5 p-3 rounded-full border border-foreground/40 mx-auto fixed left-0 right-0 top-5 bg-background/70 backdrop-blur">
-    <Image src={logo} alt="BetterIDEa" width={30} height={30} className="ml-3" />
+    <Link href="#home"><Image src={logo} alt="BetterIDEa" width={30} height={30} className="ml-3" /></Link>
     <div className="flex gap-1">
       {
         items.map(item => (
