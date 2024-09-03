@@ -70,7 +70,7 @@ function Navbar() {
   const activeUrl = latestActiveUrl.split('#')[1];
 
   return <div className="z-20 flex flex-row max-w-[90vw] w-fit items-center justify-center gap-1.5 p-3 rounded-full border border-foreground/40 mx-auto fixed left-0 right-0 top-5 bg-background/70 backdrop-blur">
-    <Link href="#home"><Image src={logo} alt="BetterIDEa" width={30} height={30} className="ml-3" /></Link>
+    <Link href="/#home"><Image src={logo} alt="BetterIDEa" width={30} height={30} className="ml-3" /></Link>
     <div className="flex gap-1">
       {
         items.map(item => (
@@ -112,14 +112,7 @@ function Product({ heading, title, description, image, link }: {
 export default function Home() {
   return (
     <main>
-      <Head>
-        <title>BetterIDEa</title>
-        <meta name="description" content="BetterIDEa - Enhancing the AO developer experience" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#000000" />
-        <link rel="icon" href="/logo.png" />
-        <link rel="apple-touch-icon" href="/logo.png" />
-      </Head>
+      <title>BetterIDEa</title>
       <Navbar />
       <div className="min-h-screen flex items-center" id="home">
         <Image src={pattern} alt="bg-grid" className="w-full h-[220px] object-bottom object-cover absolute top-0 -z-10" draggable={false} />
@@ -127,6 +120,7 @@ export default function Home() {
           <div className="flex flex-col gap-4 items-center font-serif-display text-4xl md:text-6xl">
             <div>Build the future on <i>AO</i></div>
             <div className="flex items-center gap-5">w/ <span className="text-primary text-5xl md:text-7xl">BetterIDEa</span></div>
+            <Link href="/bounties" className="text-xl mt-5 hover:bg-primary/50 rounded-full p-2 px-8 font-sans">Checkout Bounties</Link>
           </div>
         </div>
         <Image src={pattern} alt="bg-grid" className="w-full h-[220px] object-bottom object-cover absolute bottom-0 -z-10 rotate-180" draggable={false} />
