@@ -15,7 +15,7 @@ import apmcli from "@/assets/apmcli.png";
 import codecell from "@/assets/codecell.png";
 import logo from "@/assets/logo.png";
 import mirror from "@/assets/mirror.png";
-import logoFull from "@/assets/logo-full.png";
+import arnode from "@/assets/arnode.png";
 
 
 type TProduct = {
@@ -33,6 +33,13 @@ const products: TProduct[] = [
     description: "Build faster, smarter, and more efficiently with BetterIDEa, the ultimate native web IDE for AO development",
     image: ide,
     link: "https://ide.betteridea.dev"
+  },
+  {
+    heading: "ArNode",
+    title: "High performance arweave gateway",
+    description: "with great gateways come great decentralisation",
+    image: arnode,
+    link: "https://arnode.asia"
   },
   {
     heading: "AO Package Manager",
@@ -120,7 +127,7 @@ export default function Home() {
           <div className="flex flex-col gap-4 items-center font-serif-display text-4xl md:text-6xl">
             <div>Build the future on <i>AO</i></div>
             <div className="flex items-center gap-5">w/ <span className="text-primary text-5xl md:text-7xl">BetterIDEa</span></div>
-            <Link href="/bounties" className="text-xl mt-5 hover:bg-primary/50 rounded-full p-2 px-8 font-sans">Checkout Bounties</Link>
+            {/* <Link href="/bounties" className="text-xl mt-5 hover:bg-primary/50 rounded-full p-2 px-8 font-sans">Checkout Bounties</Link> */}
           </div>
         </div>
         <Image src={pattern} alt="bg-grid" className="w-full h-[220px] object-bottom object-cover absolute bottom-0 -z-10 rotate-180" draggable={false} />
@@ -139,12 +146,13 @@ export default function Home() {
       <div className="min-h-[70vh] flex flex-col items-center justify-center">
         <div className="text-center text-4xl font-serif-display">The Team</div>
         <div className="mx-auto w-fit flex flex-col items-center my-5">
-          <Image src="https://pbs.twimg.com/profile_images/1797158678032003072/kD_OsxAF_400x400.jpg" alt="Ankush" className="rounded-full border" width={120} height={120} draggable={false} />
+          <Image src="https://pbs.twimg.com/profile_images/1874535694384926720/kSKTdDJ5_400x400.jpg" alt="Ankush" className="rounded-full border" width={120} height={120} draggable={false} />
           <div className="text-3xl flex items-center gap-2">Ankush</div>
           <div className="-mt-1 mb-1 text-muted-foreground flex items-center gap-2">Founder</div>
           <div className="font-serif-display flex items-center gap-2 my-2">
             <Link href="https://x.com/ankushKun_" target="_blank"><FaXTwitter size={20} /></Link>
             <Link href="https://linkedin.com/in/ankushKun" target="_blank"><FaLinkedin size={20} /></Link>
+            <Link href="https://github.com/ankushKun" target="_blank"><FaGithub size={20} /></Link>
           </div>
         </div>
       </div>
