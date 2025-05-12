@@ -16,6 +16,7 @@ import codecell from "@/assets/codecell.png";
 import logo from "@/assets/logo.png";
 import mirror from "@/assets/mirror.png";
 import arnode from "@/assets/arnode.png";
+import aoxpress from "@/assets/aoxpress.png";
 
 
 type TProduct = {
@@ -61,6 +62,19 @@ const products: TProduct[] = [
     description: "Manage your AO packages from the terminal",
     image: apmcli,
     link: "https://www.npmjs.com/package/apm-tool"
+  },
+  {
+    heading: "aoxpress + aofetch",
+    title: "Easy and familiar syntax for devs",
+    description: "Express like syntax for defining handlers and calling them from frontend",
+    image: aoxpress,
+    link: "https://github.com/ankushKun/aoxpress"
+  }, {
+    heading: "LuaX",
+    title: "JSX for Lua",
+    description: "Write JSX like syntax in Lua and serve them using aoxpress",
+    image: undefined,
+    link: "https://github.com/ankushKun/aoxpress/tree/main/luax"
   }
 ]
 
@@ -146,7 +160,7 @@ export default function Home() {
       <div className="min-h-[70vh] flex flex-col items-center justify-center">
         <div className="text-center text-4xl font-serif-display">The Team</div>
         <div className="mx-auto w-fit flex flex-col items-center my-5">
-          <Image src="https://pbs.twimg.com/profile_images/1874535694384926720/kSKTdDJ5_400x400.jpg" alt="Ankush" className="rounded-full border" width={120} height={120} draggable={false} />
+          <Image src="/founder.png" alt="Ankush" className="rounded-full border" width={120} height={120} draggable={false} />
           <div className="text-3xl flex items-center gap-2">Ankush</div>
           <div className="-mt-1 mb-1 text-muted-foreground flex items-center gap-2">Founder</div>
           <div className="font-serif-display flex items-center gap-2 my-2">
