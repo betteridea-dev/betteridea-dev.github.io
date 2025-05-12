@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Head from "next/head";
 import { CodeCell } from "@betteridea/codecell";
+import { useState, useEffect } from "react";
+import { FaGreaterThan } from "react-icons/fa6";
 
-import { FaDiscord, FaGithub, FaGreaterThan, FaLessThan, FaLinkedin, FaTwitter, FaXTwitter } from "react-icons/fa6"
+import { FaDiscord, FaGithub, FaLessThan, FaLinkedin, FaTwitter, FaXTwitter } from "react-icons/fa6"
 import { TbMailFilled } from "react-icons/tb"
 
 import pattern from "@/assets/pattern.svg";
@@ -17,6 +19,7 @@ import logo from "@/assets/logo.png";
 import mirror from "@/assets/mirror.png";
 import arnode from "@/assets/arnode.png";
 import aoxpress from "@/assets/aoxpress.png";
+import luax from "@/assets/luax.png";
 
 
 type TProduct = {
@@ -73,19 +76,26 @@ const products: TProduct[] = [
     heading: "LuaX",
     title: "JSX for Lua",
     description: "Write JSX like syntax in Lua and serve them using aoxpress",
-    image: undefined,
+    image: luax,
     link: "https://github.com/ankushKun/aoxpress/tree/main/luax"
   }
 ]
 
 function Navbar() {
   const items = [
-    // { name: "Home", href: "#home" },
     { name: "Products", href: "#products" },
     { name: "Team", href: "#team" },
     { name: "Contact", href: "#contact" },
     { name: "Docs", href: "https://docs.betteridea.dev" },
   ]
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const element = document.querySelector(href);
+      element?.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   const latestActiveUrl = typeof window !== 'undefined' ? window.location.href : '';
   const activeUrl = latestActiveUrl.split('#')[1];
@@ -95,7 +105,7 @@ function Navbar() {
     <div className="flex gap-1">
       {
         items.map(item => (
-          <Link href={item.href} key={item.name}>
+          <Link href={item.href} key={item.name} onClick={(e) => handleClick(e, item.href)}>
             <Button data-active={("#" + activeUrl).endsWith(item.href)} className="rounded-full px-4 h-6 text-sm data-[active=true]:bg-primary" variant="ghost">{item.name}</Button>
           </Link>
         ))
@@ -113,21 +123,60 @@ function Product({ heading, title, description, image, link }: {
 }) {
   return <div className="mx-auto md:px-24">
     <div className="text-3xl font-serif-display text-center flex gap-3 items-center relative p-5 px-10 md:px-20 pt-20">{heading} <div className="h-[1px] bg-foreground/30 grow" /></div>
-    <div className="mx-10 md:mx-20 p-4 bg-gradient-to-b from-foreground/5 to-white rounded-xl">
+    <div className="mx-10 md:mx-20 p-4 bg-gradient-to-b from-foreground/5 to-white rounded-xl transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
       <div className="flex flex-col md:flex-row gap-5 items-center">
-        <div className="aspect-square">
-          <Image src={image} alt={title} width={500} height={500} />
+        <div className="aspect-square relative">
+          <Image
+            src={image}
+            alt={title}
+            width={500}
+            height={500}
+          />
         </div>
         <div className="md:w-1/2">
           <div className="text-xl font-bold">{title}</div>
           <div className="text-lg text-muted-foreground">{description}</div>
           <Link href={link} target="_blank">
-            <Button className="mt-5 rounded-full text-foreground">Try it yourself <FaGreaterThan className="scale-x-50 ml-2" /></Button>
+            <Button className="mt-5 rounded-full text-foreground hover:scale-105 transition-transform">Try it yourself <FaGreaterThan className="scale-x-50 ml-2" /></Button>
           </Link>
         </div>
       </div>
     </div>
   </div>
+}
+
+function ScrollToTop() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.pageYOffset > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('scroll', toggleVisibility);
+    return () => window.removeEventListener('scroll', toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  return (
+    <button
+      onClick={scrollToTop}
+      className={`fixed bottom-4 right-4 p-3 rounded-full bg-primary text-background transition-opacity duration-300 ${isVisible ? 'opacity-100' : 'opacity-0'
+        }`}
+    >
+      <FaGreaterThan className="rotate-[-90deg]" />
+    </button>
+  );
 }
 
 export default function Home() {
@@ -196,6 +245,7 @@ export default function Home() {
           </div>
         </Link>
       </footer>
+      <ScrollToTop />
     </main>
   );
 }
